@@ -1,0 +1,48 @@
+application: todo-app
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: yes
+
+handlers:
+- url: /favicon\.ico
+  static_files: favicon.ico
+  upload: favicon\.ico
+
+- url: /fonts
+  static_dir: public/fonts
+
+- url: /js
+  static_dir: public/js
+
+- url: /css
+  static_dir: public/css
+
+- url: /imagenes
+  static_dir: public/imagenes
+
+- url: /img
+  static_dir: public/img
+
+- url: /datatables
+  static_dir: public/datatables
+
+- url: /metisMenu
+  static_dir: public/metisMenu
+
+- url: /photoswipe
+  static_dir: public/photoswipe
+
+- url: /
+  script: main.app
+
+- url: .*
+  script: main.app
+  login: required
+  auth_fail_action: redirect
+
+libraries:
+- name: webapp2
+  version: "2.5.2"
+- name: jinja2
+  version: "2.6"

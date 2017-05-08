@@ -1,0 +1,45 @@
+
+{% macro textarea(name, entity, HTMLschema, errors, traduction) %}
+ <div class="form-group">
+    <label for="{{name}}">{{ traduction }}</label>
+    <Textarea class="form-control" name="{{name}}" {% if HTMLschema[name]%}{{ HTMLschema[name] }}{%endif%} id="{{name}}"> {% if entity[name] %} {{ entity[name] }} {% endif %}</Textarea>
+    {% if errors[name] %}<span class="label label-danger">{{ t( errors[name].type , errors[name].params) }}</span> {% endif %}
+</div>
+{% endmacro %}
+
+{% macro input(type ,name, entity, HTMLschema, errors, traduction) %}
+ <div class="form-group">
+    <label for="{{name}}">{{ traduction }}</label>
+    <input type="{{type}}" class="form-control" name="{{name}}" {% if HTMLschema[name] %} {{ HTMLschema[name] }} {% endif %} id="{{name}}"  value='{% if entity %}{% if entity[name] %}{{ entity[name] }}{% endif %}{% endif %}' />
+    {% if errors %}{% if errors[name] %}<span class="label label-danger">{{ t( errors[name].type , errors[name].params) }}</span> {% endif %}{% endif %}
+</div>
+{% endmacro %}
+
+{% macro hiddenKey(name,entity) %}
+    <input type="hidden" class="form-control" name="{{ name }}key"  id="{{ name }}key"  value='{{tarea.key.urlsafe()}}' />
+
+{% endmacro %}
+
+{% macro output(value, traduction) %}
+ <div class="form-group">
+    <label >{{traduction}}</label>
+    <p>{{value}}</p>
+</div>
+{% endmacro %}
+
+
+{% macro buildTareaIU(tarea) %}
+    <li class="panel panel-info tarea" tareaKey="{{tarea.key.urlsafe()}}" >
+        <div class="panel-heading">{{ tarea.titulo }} <a href="/tareas/editar?Tareakey={{tarea.key.urlsafe()}}" style="float:right"><i class="fa fa-pencil" aria-hidden="true"></i></a></div>
+        <div class="panel-body">{{ tarea.mensaje }}</div>
+    </li>
+{% endmacro %}
+
+
+{% macro text(name, entity, schema, errors, traduction) %}
+ {{ input("text",name,entity, schema, errors, traduction) }}
+{% endmacro %}
+
+{% macro number(name, entity, schema, errors, traduction) %}
+   {{ input("number",name,entity, schema, errors, traduction) }}
+{% endmacro %}

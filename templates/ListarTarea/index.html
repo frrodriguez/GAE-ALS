@@ -1,0 +1,121 @@
+{% extends "BaseLayouts/layout.html" %}
+
+
+{% block headcss %}
+{% endblock %}
+
+
+{% block endjs %}
+
+<!-- Page-Level Demo Scripts - Tables - Use for reference -->
+<script>
+  $(document).ready(function() {
+
+
+    $( "#pendientes, #haciendo" ).sortable({
+        connectWith: ".connectedSortable",
+        update: function() {
+        $('.tarea').each(function(index, elem) {
+                 var listItem = $(elem),
+                     newIndex = listItem.index();
+
+                 $.ajax({
+                     url: "/tareas/moverTarea",
+                     type: "POST",
+                     data: {
+                         "key"  : listItem.attr("tareaKey"),
+                         "userTarea" : "{{currentUser.get_id() }}",
+                        "estado" : (listItem.parent().attr("id") == "haciendo")? 1 : 2,
+                         "order" : index
+                     }
+                     });
+            });
+        }
+    });
+
+  });
+</script>
+
+{% endblock %}
+
+{% block pageHeader %}
+{{ t("titulo list tarea") }}
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-sm-12">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">{{ t("opciones") }}</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+
+                            <a  href="/tareas/nueva" >{{ t("boton list nuevaTarea") }}</a>
+
+                        </li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {{ t("tareas list haciendo") }}
+            </div>
+            <!-- /.panel-heading -->
+
+            <div class="panel-body">
+                  <!-- List group -->
+                  <ul id = "haciendo" class="list-unstyled connectedSortable listadoTareas">
+                      {% for tarea in list %}
+                        {% if tarea.estado == 1 %}
+                            {{ form.buildTareaIU(tarea) }}
+                        {% endif %}
+                      {% endfor %}
+                  </ul>
+            </div>
+            <!-- /.panel-body -->
+        </div>
+
+    </div>
+    <div class="col-lg-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {{ t("tareas list pendientes") }}
+            </div>
+            <!-- /.panel-heading -->
+
+            <div class="panel-body">
+                  <!-- List group -->
+                  <ul id = "pendientes" class="list-unstyled connectedSortable listadoTareas">
+                      {% for tarea in list %}
+                        {% if not tarea.estado == 1%}
+                            {{ form.buildTareaIU(tarea) }}
+                        {% endif %}
+                      {% endfor %}
+                  </ul>
+            </div>
+            <!-- /.panel-body -->
+        </div>
+
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+{% endblock %}

@@ -1,0 +1,36 @@
+ {% extends "BaseLayouts/layout.html" %}
+
+ {% block headcss %}
+ <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" />
+ <link rel="stylesheet" href="/css/myCss.css">
+ {% endblock %}
+
+ {% block endjs %}{% endblock %}
+
+ {% block pageHeader %} {{ t("titulo add tarea") }}{% endblock %}
+
+ {% block content %}
+
+<div class="row">
+    <div class="col-lg-12">
+        <form method="post" action="/tareas/nueva" >
+            <div class="panel panel-info">
+                <div class="panel-heading">{{ t("tarea add datos basicos") }}</div>
+                <div class="panel-body">
+                     {{ form.text( "titulo", tarea, SchemaTarea, errors , t("tarea add titulo")) }}
+
+                     {{ form.text( "mensaje", tarea, SchemaTarea, errors , t("producto add mensaje")) }}
+
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary pull-right">{{ t("boton add tarea") }}</button>
+        </form>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+
+{% endblock %} 
+
+{% block beforebodyclose %}
+{% endblock %}

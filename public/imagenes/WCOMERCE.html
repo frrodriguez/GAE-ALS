@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<!-- saved from url=(0039)http://localhost:4000/usuarios/clientes -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>WCOMERCE</title>
+    
+
+    
+        <!-- Bootstrap -->
+        <link href="./WCOMERCE_files/bootstrap.min.css" rel="stylesheet">
+
+        <!-- MetisMenu CSS -->
+        <link href="./WCOMERCE_files/metisMenu.min.css" rel="stylesheet">
+
+        <!-- Custom CSS -->
+        <link href="./WCOMERCE_files/sb-admin-2.css" rel="stylesheet">
+
+        <!-- Font Awesome -->
+        <link href="./WCOMERCE_files/font-awesome.min.css" rel="stylesheet">
+
+        <!-- Custom CSS -->
+        <link href="./WCOMERCE_files/myCss.css" rel="stylesheet">
+            
+<!-- DataTables CSS -->
+<link href="./WCOMERCE_files/dataTables.bootstrap.css" rel="stylesheet">
+
+<!-- DataTables Responsive CSS -->
+<link href="./WCOMERCE_files/dataTables.responsive.css" rel="stylesheet">
+
+    
+
+    
+        
+
+        
+    
+</head>
+<body>
+
+
+<div id="wrapper">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://localhost:4000/bienvenida">WComerce</a>
+              <p class="navbar-text">Bienvenido: Fran2</p> 
+
+        </div>
+        <!-- /.navbar-header -->
+
+        <ul class="nav navbar-top-links navbar-right">
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="http://localhost:4000/#">
+                    <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-messages">
+                    <li>
+                        <a href="http://localhost:4000/usuarios/perfil"><i class="fa fa-play-circle-o fa-fw"></i>Mi perfil</a>
+                    </li>
+                    <li>
+                        <a><form method="post" action="http://localhost:4000/usuarios/cambiarIdioma">
+                            <input type="hidden" name="idioma" value="es-ES">
+                            <input type="image" width="20" src="./WCOMERCE_files/es.png" alt="Submit Form">
+                        </form></a>
+                    </li>
+                    <li>
+                        <a><form method="post" action="http://localhost:4000/usuarios/cambiarIdioma">
+                            <input type="hidden" name="idioma" value="en-EN">
+                            <input type="image" width="20" src="./WCOMERCE_files/en.png" alt="Submit Form">
+                        </form></a>
+                    </li>
+                    <li>
+                        <a href="http://localhost:4000/usuarios/logout"><i class="fa fa-sign-out fa-fw"></i>Cerrar Sesion</a>
+                    </li>
+
+                </ul>
+                <!-- /.dropdown-user -->
+            </li>
+            <!-- /.dropdown -->
+        </ul>
+        <!-- /.navbar-top-links -->
+
+
+
+        <div class="navbar-default sidebar" role="navigation">
+            <div class="sidebar-nav navbar-collapse">
+
+                <ul class="nav" id="side-menu">
+                    <li>
+                        <a href="http://localhost:4000/bienvenida/">
+                            Principal</a>
+                    </li>
+                    <li>
+                        <a href="http://localhost:4000/usuarios/clientes#"><i class="fa fa-play-circle-o fa-fw"></i>Estadísticas y Análisis</a>
+                    </li>
+                    <li>
+                        <a href="http://localhost:4000/productos/"><i class="fa fa-play-circle-o fa-fw"></i>Productos</a>
+                    </li>
+                    <li>
+                        <a href="http://localhost:4000/promociones"><i class="fa fa-play-circle-o fa-fw"></i>Promociones</a>
+                    </li>
+                    <li>
+                        <a href="http://localhost:4000/usuarios/clientes#"><i class="fa fa-play-circle-o fa-fw"></i>Ventas</a>
+                    </li>
+                    <li>
+                        <a href="http://localhost:4000/establecimiento/clientes"><i class="fa fa-play-circle-o fa-fw"></i>Clientes</a>
+                    </li>
+                   <!-- <li>
+                        <a href="#"><i class="fa fa-play-circle-o fa-fw"></i>Mensajes</a>
+                    </li>
+                    <li>
+                        <a href="/visitas/actuales"><i class="fa fa-play-circle-o fa-fw"></i>Clientes Tienda</a>
+                    </li>-->
+                </ul>
+
+
+            </div>
+            <!-- /.sidebar-collapse -->
+        </div>
+        <!-- /.navbar-static-side -->
+
+    </nav>
+
+    <div id="page-wrapper" style="min-height: 708px;">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+titulo list cliente
+</h1>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+        <!-- <?php
+            $variable = $view->popFlash();
+        if ($variable != "") {
+        ?>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="alert alert-<?= ((strpos($variable, '@danger') !== false)? 'danger': ((strpos($variable, '@warning') !== false)? 'warning': 'success')) ?>" role="alert"><?= str_replace("@danger", "", str_replace("@warning", "", $variable))  ?></div>
+            </div>
+        </div>
+        <?php }?>
+        -->
+
+        <!-- /.row -->
+        
+        
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Listado
+            </div>
+            <!-- /.panel-heading -->
+
+            <div class="panel-body">
+                <div id="dataTables-example_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer"><div class="row"><div class="col-sm-6"><div class="dataTables_length" id="dataTables-example_length"><label>Show <select name="dataTables-example_length" aria-controls="dataTables-example" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div></div><div class="col-sm-6"><div id="dataTables-example_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control input-sm" placeholder="" aria-controls="dataTables-example"></label></div></div></div><div class="row"><div class="col-sm-12"><table width="100%" class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline" id="dataTables-example" role="grid" aria-describedby="dataTables-example_info" style="width: 100%;">
+                    <thead>
+                    <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="
+                            cliente list nombre
+                        : activate to sort column descending" style="width: 368px;">
+                            cliente list nombre
+                        </th><th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="
+                            cliente list idUsuario
+                        : activate to sort column ascending" style="width: 400px;">
+                            cliente list idUsuario
+                        </th><th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="
+                            Acciones
+                        : activate to sort column ascending" style="width: 219px;">
+                            Acciones
+                        </th></tr>
+                    </thead>
+                    <tbody>
+                    
+                    
+                    
+                    <tr role="row" class="odd">
+                        <td class="sorting_1">
+                            Fran2
+                        </td>
+                        <td>
+                            6
+                        </td>
+                        <td>
+
+                            <a href="http://localhost:4000/usuarios/6" title="Ver">
+                                <span class="glyphicon glyphicon-edit"></span> Ver
+                            </a>
+
+                        </td>
+                    </tr></tbody>
+                </table></div></div><div class="row"><div class="col-sm-6"><div class="dataTables_info" id="dataTables-example_info" role="status" aria-live="polite">Showing 1 to 1 of 1 entries</div></div><div class="col-sm-6"><div class="dataTables_paginate paging_simple_numbers" id="dataTables-example_paginate"><ul class="pagination"><li class="paginate_button previous disabled" aria-controls="dataTables-example" tabindex="0" id="dataTables-example_previous"><a href="http://localhost:4000/usuarios/clientes#">Previous</a></li><li class="paginate_button active" aria-controls="dataTables-example" tabindex="0"><a href="http://localhost:4000/usuarios/clientes#">1</a></li><li class="paginate_button next disabled" aria-controls="dataTables-example" tabindex="0" id="dataTables-example_next"><a href="http://localhost:4000/usuarios/clientes#">Next</a></li></ul></div></div></div></div>
+            </div>
+            <!-- /.panel-body -->
+        </div>
+
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+
+
+        <!-- /.row -->
+        <div class="row" style="height:50px">
+            <!-- Margin bottom -->
+        </div>
+    </div>
+    <!-- /#page-wrapper -->
+</div>
+<!-- /#wrapper -->
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="./WCOMERCE_files/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="./WCOMERCE_files/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="./WCOMERCE_files/metisMenu.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="./WCOMERCE_files/sb-admin-2.js"></script>
+
+    <!-- My JS -->
+    <script src="./WCOMERCE_files/javaScript.js"></script>
+        
+<!-- DataTables JavaScript -->
+<script src="./WCOMERCE_files/jquery.dataTables.min.js"></script>
+<script src="./WCOMERCE_files/jeditable.min.js"></script>
+<script src="./WCOMERCE_files/dataTables.bootstrap.min.js"></script>
+<script src="./WCOMERCE_files/dataTables.responsive.js"></script>
+<!-- Page-Level Demo Scripts - Tables - Use for reference -->
+<script>
+
+  $(document).ready(function() {
+    $("#dataTables-example").DataTable({
+      responsive: true,
+      search:false
+
+    });
+  });
+</script>
+
+
+
+
+
+    
+
+    
+
+
+
+
+</body></html>
