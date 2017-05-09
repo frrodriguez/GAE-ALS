@@ -1,0 +1,38 @@
+{% extends "BaseLayouts/layout.html" %} {% block headcss %}
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" /
+
+<!-- Core CSS file -->
+<!-- Skin CSS file (styling of UI - buttons, caption, etc.)
+     In the folder of skin CSS file there are also:
+     - .png and .svg icons sprite,
+     - preloader.gif (for browsers that do not support CSS animations) -->
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+<link rel="stylesheet" href="/css/myCss.css">
+
+{% endblock %} {% block endjs %}
+
+
+{% endblock %} {% block pageHeader %} {{ t("titulo add recuerdo") }} {% endblock %} {% block content %}
+
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <form method="post" action="/recuerdos/nuevo" enctype="multipart/form-data" onsubmit="return hasPhotos();">
+
+            {{ form.text( "mensaje", recuerdo, SchemaRecuerdo, errors , t("recuerdo add mensaje")) }}
+
+            {{ form.file( "imagen", recuerdo, SchemaRecuerdo, errors , t("recuerdo add image")) }}
+
+            <button type="submit" class="btn btn-primary pull-right">{{ t("boton add recuerdo") }}</button>
+        </form>
+    </div>
+    <!-- /.col-lg-12 -->
+</div></div>
+
+{% endblock %}
+
+{% block beforebodyclose %}{% endblock %}
