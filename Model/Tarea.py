@@ -3,7 +3,7 @@ from google.appengine.ext import ndb
 
 class Tarea(ndb.Model):
     estado = ndb.IntegerProperty(required=True)
-    order = ndb.IntegerProperty(required=True)
+    order = ndb.IntegerProperty(required=True, indexed=True)
     titulo = ndb.StringProperty(required=True)
     mensaje = ndb.StringProperty(required=True)
     user = ndb.StringProperty(required=True)

@@ -8,6 +8,7 @@ from Utils.Wrappers.userWrapper import wrapUsuarioLogeado
 
 from google.appengine.api import users
 
+
 class BaseHandler(webapp2.RequestHandler):
 
     def __init__(self, request, response, controllerName):
@@ -23,8 +24,10 @@ class BaseHandler(webapp2.RequestHandler):
             "errors" : { },  # Mensaje de error
             "currentUser" : None
         }
-        wrapi18n(self) # Funcion de traduccion
+
+
         wrapUsuarioLogeado(self) # Establece el usuario logueado
+        wrapi18n(self) # Funcion de traduccion
 
         print (controllerName)
 
@@ -36,4 +39,4 @@ class BaseHandler(webapp2.RequestHandler):
         return JINJA_ENVIRONMENT.get_template("{0}/{1}".format(self.controllerName,templateName))
 
     def is_user_loged(self):
-        return True if self.currentUser else False
+        return True if self.user else False

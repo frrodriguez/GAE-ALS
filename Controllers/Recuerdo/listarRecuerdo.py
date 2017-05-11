@@ -12,7 +12,7 @@ class ListarRecuerdoHandler(BaseHandler):
     def get(self):
 
         self.render_data.update({
-            "list" : Recuerdo.query(Recuerdo.user == self.user.get_id()).order(Recuerdo.fecha)
+            "list" : Recuerdo.query(Recuerdo.user == self.user.get_id())
         })
 
         template = self.get_template( "index.html")

@@ -30,16 +30,16 @@ function showGallery(element) {
 
 function addImage(data, UUID, principal){
   console.log(principal);
-  $('#fotosGaleria').append('<div class="col-xs-6 col-sd-6 col-md-4 col-lg-3" id="imgItem_' + idCont + '" UUID="'+((UUID)? UUID : "NONE")+'"> <div class="thumbnail imgItem '+((principal)? "foto-principal":"")+'"  data-imgId="' + idCont + '"   ><img class="img-responsive minimun-heigth-miniImg" style="max-width:200px; max-height:150px" onclick="showGallery(this);" src="' + data + '"><hr /><div class="caption"><div class="form-group"><p>'+findTituloImageUUID(UUID)+'</p></div></div></div></div>');
+  $('#fotosGaleria').append('<div class="col-xs-6 col-sd-6 col-md-4 col-lg-3" id="imgItem_' + idCont + '" UUID="'+((UUID)? UUID : "NONE")+'"> <div class="thumbnail imgItem '+((principal)? "foto-principal":"")+'"  data-imgId="' + idCont + '"   ><img class="img-responsive minimun-heigth-miniImg" style="max-width:200px; max-height:150px" onclick="showGallery(this);" src="' + data + '"><hr /><div class="caption"><div class="form-group"><p>'+findDataImageUUID(UUID)[0]+'</p><div class="alert alert-info alert-dismissible" style="padding: 8px" role="alert"> '+findDataImageUUID(UUID)[1]+' <form method="post" action="/recuerdos/eliminar" style="display:inline" ><input type="hidden" name="Recuerdokey" value="'+UUID+'"/> <button type="submit" class="btn btn-danger" style="display: inline;position:relative" style="margin:0px"><i class="fa fa-trash" aria-hidden="true"></i></button> </form> </div></div></div></div></div>');
 
   idCont++;
 
 }
 
-function findTituloImageUUID(UUID){
+function findDataImageUUID(UUID){
   for (var i = 0; i < images.length; i++){
     if (images[i].UUID === UUID)
-      return images[i].titulo;
+      return [images[i].mensaje,images[i].fecha];
   }
   return "";
 }
@@ -57,7 +57,7 @@ var FotoShower = function(nameDiv, imags, princ, title) {
     element.imagen.onload = function(){
       var height = element.imagen.height;
       var width = element.imagen.width;
-
+      console.log(element.imagen.src);
       slices.push({
         url: element.imagen.src,
         w: element.imagen.width,

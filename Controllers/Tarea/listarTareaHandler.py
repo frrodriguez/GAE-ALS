@@ -14,7 +14,7 @@ class ListarTareaHandler(BaseHandler):
 
 
         self.render_data.update({
-            "list" : Tarea.query(Tarea.user == self.user.get_id()).order(Tarea.order)
+            "list" : sorted(Tarea.query(Tarea.user == self.user.get_id()).fetch(100000),key=lambda x: x.order, reverse=False)
         })
 
         template = self.get_template( "index.html")

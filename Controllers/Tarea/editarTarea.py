@@ -91,4 +91,4 @@ class EditarTareaHandler(BaseHandler):
 
         tarea.put()
         time.sleep(1)
-        self.redirect('/tareas',True)
+        self.redirect('/tareas')

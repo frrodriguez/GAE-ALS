@@ -5,6 +5,8 @@ arrayLang = []
 import importlib
 from os import listdir
 
+def getLenguajesDisponibles():
+    return listdir("Utils/I18n/Locales")
 
 
 def traductionCreator(lang):

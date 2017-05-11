@@ -22,6 +22,12 @@ from Controllers.Tarea.listarTareaHandler import ListarTareaHandler
 from Controllers.Tarea.moverTarea import MoverTareaTareaHandler
 from Controllers.Tarea.editarTarea import EditarTareaHandler
 from Controllers.Tarea.eliminarTarea import EliminarTareaHandler
+from Controllers.Recuerdo.addRecuerdo import CrearRecuerdoHandler
+from Controllers.Recuerdo.listarRecuerdo import ListarRecuerdoHandler
+from Controllers.Idioma.cambiarIdioma import CambiarIdiomaHandler
+from Controllers.Recuerdo.eliminarRecuerdo import EliminarRecuerdoHandler
+
+#Comentario
 
 app = webapp2.WSGIApplication([
     ('/', InicioHandler),
@@ -29,5 +35,9 @@ app = webapp2.WSGIApplication([
     ('/tareas/nueva', CrearTareaHandler),
     ('/tareas/moverTarea', MoverTareaTareaHandler),
     ('/tareas/editar', EditarTareaHandler),
-    ('/tareas/eliminar', EliminarTareaHandler)
+    ('/tareas/eliminar', EliminarTareaHandler),
+    ('/recuerdos', ListarRecuerdoHandler),
+    ('/recuerdos/nuevo', CrearRecuerdoHandler),
+    ('/recuerdos/eliminar', EliminarRecuerdoHandler),
+    ('/cambiarIdioma', CambiarIdiomaHandler)
 ], debug=True)

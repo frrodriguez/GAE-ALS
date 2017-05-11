@@ -1,8 +1,12 @@
+from google.appengine.ext import ndb
 
-class User:
-    def __init__(self,AppEngineUser,isAdmin):
+
+class User(ndb.Model):
+
+    def __init__(self,AppEngineUser,isAdmin, idioma = "es"):
         self.APU = AppEngineUser
-        self.isAdmin = isAdmin;
+        self.isAdmin = isAdmin
+        self.idioma = idioma
 
     def get_nickname(self):
         return self.APU.nickname()
